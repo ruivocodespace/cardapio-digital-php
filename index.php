@@ -17,11 +17,20 @@ if (isset($_SESSION["usuario_nome"])) {
 
 require_once "config/conexao.php";
 
+$item_busca = "";
+$filtro_sql = "";
+
+if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
+    $item_busca = mysqli_real_escape_string($conexao, trim($_GET['busca']));
+    // Filtra pelo nome ou descrição do produto
+    $filtro_sql = " AND (p.nome LIKE '%$item_busca%' OR p.descricao LIKE '%$item_busca%') ";
+}
+
 // Busca apenas os produtos disponíveis, ordenados por Categoria e Nome
 $sql = "SELECT p.*, c.nome as categoria_nome 
         FROM produtos p 
         JOIN categorias c ON p.categoria_id = c.id 
-        WHERE p.disponivel = 1 
+        WHERE p.disponivel = 1 $filtro_sql
         ORDER BY c.nome, p.nome";
 $resultado = mysqli_query($conexao, $sql);
 
@@ -39,6 +48,7 @@ while ($item = mysqli_fetch_assoc($resultado)) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Cardápio</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -55,10 +65,24 @@ while ($item = mysqli_fetch_assoc($resultado)) {
             <h1 style="color: #333; font-size: 36px;">🍔 Nosso Cardápio</h1>
             <p style="color: #666;">Confira nossas delícias e faça seu pedido no balcão!</p>
         </div>
+        <div class="container-busca">
+            <form action="index.php" method="GET" class="form-busca">
+                <input type="text" name="busca" class="input-busca" placeholder="Buscar prato, lanche ou bebida..." value="<?php echo htmlspecialchars($item_busca); ?>">
+                <button type="submit" class="btn-busca">
+                    🔍 </button>
+            </form>
+
+            <?php if (!empty($item_busca)): ?>
+                <div style="text-align: center; margin-top: 10px;">
+                    <span style="color: #666; font-size: 14px;">Mostrando resultados para: <strong><?php echo htmlspecialchars($item_busca); ?></strong></span>
+                    <a href="index.php" style="color: #ff4d4d; text-decoration: none; margin-left: 10px; font-weight: bold; font-size: 14px;">✖ Limpar</a>
+                </div>
+            <?php endif; ?>
+        </div>
 
         <?php if (empty($cardapio_agrupado)): ?>
             <div style="text-align: center; padding: 50px; background: white; border-radius: 8px;">
-                <h3 style="color: #888;">Nenhum produto disponível no momento. Volte mais tarde!</h3>
+                <h3 style="color: #888;">Nenhum produto disponível no momento.</h3>
             </div>
         <?php else: ?>
 

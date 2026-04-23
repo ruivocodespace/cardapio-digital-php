@@ -32,5 +32,3 @@ if (!isset($_SESSION)) {
             </div>
         </header>
     <?php endif; ?>
-
-    <main></main>

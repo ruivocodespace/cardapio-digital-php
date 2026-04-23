@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-=======
 <?php
-// Inciar sessão
-session_start();
 
 // Verificações
 require_once "../config/conexao.php";
@@ -83,4 +79,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     header("Location: dashboard.php");
     exit;
 }
->>>>>>> Stashed changes

@@ -1,0 +1,245 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* --- TELA DE LOGIN --- */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* --- CAIXA PRINCIPAL (DASHBOARD E CADASTRO) --- */
+.main-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* --- FORMULÁRIOS --- */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-control:focus {
+    border-color: #e63946;
+}
+
+/* --- BOTÕES --- */
+.btn {
+    background-color: #e63946;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn:hover { background-color: #d62828; }
+.btn-block { width: 100%; margin-top: 10px; }
+.btn-voltar { background-color: #6c757d; }
+.btn-voltar:hover { background-color: #5a6268; }
+
+/* --- TABELA DO DASHBOARD --- */
+.tabela-cardapio {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabela-cardapio th, .tabela-cardapio td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-cardapio th {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.preco {
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+/* --- HEADER E NAVBAR --- */
+.navbar {
+    background-color: #e63946; /* Vermelho restaurante */
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    margin: 0;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #f8d7da;
+}
+
+.btn-sair-nav {
+    background: rgba(0,0,0,0.2);
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+.btn-sair-nav:hover {
+    background: rgba(0,0,0,0.4);
+    color: white;
+}
+
+/* --- FOOTER --- */
+.rodape {
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    color: #888;
+    font-size: 14px;
+}
+
+
+/* --- TELA DO CARDÁPIO (USUÁRIO) --- */
+.categoria-titulo {
+    font-size: 26px;
+    color: #e63946;
+    margin: 40px 0 15px 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.grid-cardapio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsivo: 1, 2 ou 3 colunas dependendo da tela */
+    gap: 25px;
+}
+
+.card-produto {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card-produto:hover {
+    transform: translateY(-5px); /* Efeito de pular ao passar o mouse */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.card-imagem {
+    height: 180px;
+    background: #f4f7f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #999;
+}
+
+.card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-corpo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Faz o corpo esticar para os botões ficarem alinhados embaixo */
+}
+
+.card-titulo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.card-descricao {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    flex: 1; /* Preenche o espaço vazio */
+    line-height: 1.5;
+}
+
+.card-preco {
+    background-color: #2a9d8f; /* Verde para destacar o preço */
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+}

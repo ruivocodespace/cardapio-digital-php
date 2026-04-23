@@ -18,7 +18,7 @@ include_once('../includes/header.php');
 <head>
     <meta charset="UTF-8">
     <title>Dashboard - Cardápio</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>

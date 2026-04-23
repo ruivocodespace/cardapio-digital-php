@@ -1,5 +1,9 @@
 <?php
-require_once "logado.php";
+
+if (!isset($_SESSION)) {
+    header("Location: ../login.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

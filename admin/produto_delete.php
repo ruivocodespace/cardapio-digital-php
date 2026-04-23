@@ -19,10 +19,10 @@ if (isset($_GET["id"])) {
         // Apagar o arquivo de imagem da pasta
         // Só apaga se o arquivo existir e NÃO for a imagem padrão
         if ($nome_img !== 'sem-foto.jpeg' && file_exists($caminho_imagem)) {
-            unlink($caminho_imagem); // O unlink serve para deletar o arquivo físico (files)
+            unlink($caminho_imagem); // O unlink serve para deletar o arquivo (files)
         }
 
-        // 3. Deletar do banco de dados
+        // Deletar do banco de dados
         $sql_delete = "DELETE FROM produtos WHERE id = $id";
 
         if (mysqli_query($conexao, $sql_delete)) {

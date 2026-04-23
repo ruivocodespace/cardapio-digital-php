@@ -1,5 +1,7 @@
 <?php
-require_once "logado.php";
+if (!isset($_SESSION)) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -28,5 +30,3 @@ require_once "logado.php";
             </div>
         </header>
     <?php endif; ?>
-
-    <main></main>
